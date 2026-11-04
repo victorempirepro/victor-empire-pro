@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VICTOR EMPIRE PRO</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#10152a;color:white;font-family:Arial,sans-serif}
+header{padding:20px;text-align:center;background:#1b2342}
+header h2{margin:0;color:#f8c94b}
+header p{color:#b9c5e8;font-size:12px}
+.balance{margin:18px;padding:22px;text-align:center;border-radius:18px;background:linear-gradient(135deg,#49328c,#176b9c)}
+.balance h1{font-size:34px;margin:8px}
+.balance small{color:#d9e5ff}
+.card{margin:14px;padding:18px;border-radius:16px;background:#202a49}
+.card h3{margin-top:0;color:#ffd45d}
+.stat{display:flex;justify-content:space-between;margin:12px 0;color:#dce5ff}
+button{border:0;border-radius:12px;padding:13px;background:#f4c542;color:#171a2b;font-weight:bold;width:100%;margin-top:10px}
+button:active{opacity:.8}
+nav{position:fixed;bottom:0;left:0;right:0;background:#1b2342;display:flex;justify-content:space-around;padding:10px 2px}
+nav button{width:19%;padding:10px 2px;background:transparent;color:white;font-size:11px}
+nav button.active{color:#ffd45d}
+.page{display:none;padding-bottom:85px}
+.page.active{display:block}
+.item{padding:13px;background:#303b5e;border-radius:12px;margin:10px 0}
+</style>
+</head>
+<body>
+<header>
+<h2>👑 VICTOR EMPIRE PRO</h2>
+<p>WELCOME TO YOUR MINING KINGDOM</p>
+</header>
+
+<div class="balance">
+<small>MINED THIS SHIFT</small>
+<h1 id="balance">0.0000</h1>
+<small>VEX • VIRTUAL GAME POINTS</small>
+</div>
+
+<div id="mine" class="page active">
+<div class="card">
+<h3>⛏️ GREEN VALLEY PIT</h3>
+<div class="stat"><span>Mining Power</span><b>0.25 TH/s</b></div>
+<div class="stat"><span>Mining Timer</span><b id="timer">24:00:00</b></div>
+<div class="stat"><span>Mining Status</span><b>Active</b></div>
+<button onclick="claim()">CLAIM</button>
+</div>
+<div class="card">
+<h3>💎 YOUR MINER</h3>
+<div class="stat"><span>Miner Level</span><b>Rookie</b></div>
+<div class="stat"><span>Mining Rate</span><b>0.25 TH/s</b></div>
+</div>
+</div>
+
+<div id="miners" class="page">
+<div class="card">
+<h3>🛠️ MINER UPGRADES</h3>
+<div class="item">🥇 1 GRAM Miner <button onclick="upgrade(1)">Upgrade</button></div>
+<div class="item">🥇 2 GRAM Miner <button onclick="upgrade(2)">Upgrade</button></div>
+<div class="item">🥇 3 GRAM Miner <button onclick="upgrade(3)">Upgrade</button></div>
+<p>Upgrades are currently display-only.</p>
+</div>
+</div>
+
+<div id="quests" class="page">
+<div class="card">
+<h3>🎯 DAILY QUESTS</h3>
+<div class="item">Daily Check-in <button onclick="quest()">Check In</button></div>
+<div class="item">Explore the Mining Kingdom</div>
+</div>
+</div>
+
+<div id="wallet" class="page">
+<div class="card">
+<h3>💰 MY WALLET</h3>
+<div class="stat"><span>Virtual Balance</span><b id="walletBalance">0.0000 VEX</b></div>
+<p>VEX is currently an in-app game point, not real cryptocurrency or cash.</p>
+</div>
+</div>
+
+<div id="profile" class="page">
+<div class="card">
+<h3>👤 MY PROFILE</h3>
+<div class="stat"><span>Player</span><b>Miner Rookie</b></div>
+<div class="stat"><span>Rank</span><b>Beginner</b></div>
+<div class="stat"><span>Referral</span><b>Coming soon</b></div>
+</div>
+</div>
+
+<nav>
+<button class="active" onclick="show('mine',this)">⛏️<br>Mine</button>
+<button onclick="show('miners',this)">🛠️<br>Miners</button>
+<button onclick="show('quests',this)">🎯<br>Quests</button>
+<button onclick="show('wallet',this)">💰<br>Wallet</button>
+<button onclick="show('profile',this)">👤<br>Profile</button>
+</nav>
+
+<script>
+let balance=0;
+let seconds=86400;
+function show(id,btn){
+document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+document.getElementById(id).classList.add('active');
+document.querySelectorAll('nav button').forEach(b=>b.classList.remove('active'));
+btn.classList.add('active');
+}
+function claim(){
+alert('Real rewarded ads and server verification are not connected yet.');
+}
+function upgrade(level){
+alert('Miner upgrade system will be connected to the secure game database.');
+}
+function quest(){
+alert('Daily quest will be activated after account and database setup.');
+}
+setInterval(()=>{
+if(seconds>0)seconds--;
+let h=String(Math.floor(seconds/3600)).padStart(2,'0');
+let m=String(Math.floor(seconds%3600/60)).padStart(2,'0');
+let s=String(seconds%60).padStart(2,'0');
+document.getElementById('timer').textContent=h+':'+m+':'+s;
+},1000);
+</script>
+</body>
+  </html>
