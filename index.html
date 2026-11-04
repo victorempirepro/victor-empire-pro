@@ -2,146 +2,154 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Victor Empire Pro</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VICTOR EMPIRE PRO</title>
 <style>
 *{box-sizing:border-box}
-body{margin:0;background:#10172b;color:#fff;font-family:Arial,sans-serif;padding-bottom:85px}
-header{padding:18px;text-align:center;background:#182443;border-bottom:1px solid #39476b}
-header h2{margin:0;color:#f8ce62}
-header small{color:#9eafd4}
-.page{display:none;padding:15px}
-.page.active{display:block}
-.hero{padding:22px;border-radius:20px;text-align:center;background:linear-gradient(145deg,#302b67,#155d79)}
-.hero h1{font-size:32px;color:#ffd45c;margin:12px}
-.card{background:#202d4b;border:1px solid #354363;border-radius:17px;padding:17px;margin:13px 0}
-.card h3{color:#ffd45c;margin-top:0}
-.stats{display:flex;justify-content:space-between;margin:13px 0;color:#dce6ff}
-button{border:0;border-radius:12px;padding:13px;background:#f5c64d;color:#18203a;font-weight:bold;width:100%;margin-top:10px}
-.item{background:#303e60;padding:14px;border-radius:12px;margin:10px 0}
-.muted{color:#aebbd6;font-size:13px;line-height:1.5}
-nav{position:fixed;bottom:0;left:0;right:0;background:#182443;display:flex;justify-content:space-around;padding:8px 2px;border-top:1px solid #39476b}
-nav button{background:none;color:#b9c6e2;width:20%;font-size:11px;padding:8px 1px}
-nav button.active{color:#ffd45c}
-nav span{display:block;font-size:20px;margin-bottom:4px}
+body{margin:0;background:#101522;color:white;font-family:Arial,sans-serif}
+header{text-align:center;padding:16px;background:#171f30;border-bottom:2px solid #dba52c}
+header h2{margin:0;color:#ffd45b}
+header small{color:#aebbd0}
+main{padding:14px;max-width:600px;margin:auto}
+.panel{background:#1b2639;border:1px solid #39475c;border-radius:15px;padding:15px;margin-bottom:14px}
+.stats{display:flex;justify-content:space-between;gap:8px;text-align:center}
+.stat{flex:1;background:#111a29;padding:12px 5px;border-radius:10px}
+.stat strong{display:block;color:#ffd45b;font-size:20px}
+.scene{height:290px;position:relative;overflow:hidden;border-radius:14px;background:linear-gradient(#70b7dc 0%,#c1e5e6 48%,#527b48 49%,#263e2c 100%)}
+.sun{position:absolute;right:25px;top:20px;font-size:35px}
+.mountain{position:absolute;bottom:110px;left:-25px;width:190px;height:130px;background:#697c82;clip-path:polygon(50% 0,100% 100%,0 100%)}
+.mountain.two{left:125px;width:220px;height:160px;background:#52656d}
+.mountain.three{left:290px;width:180px;height:120px;background:#71858b}
+.ground{position:absolute;bottom:0;width:100%;height:105px;background:#344a31;border-top:8px solid #6a8c43}
+.cave{position:absolute;bottom:65px;left:50%;transform:translateX(-50%);width:155px;height:105px;background:#151b20;border:10px solid #91643c;border-bottom:0;border-radius:80px 80px 0 0}
+.cave:after{content:"";position:absolute;bottom:0;left:15px;width:105px;height:45px;background:#f1a52b;opacity:.28;border-radius:50%}
+.track{position:absolute;bottom:20px;left:0;width:100%;height:5px;background:#b4a58b}
+.cart{position:absolute;bottom:23px;left:65%;font-size:40px;animation:cartmove 5s ease-in-out infinite alternate}
+@keyframes cartmove{from{transform:translateX(-20px)}to{transform:translateX(20px)}}
+.miner{position:absolute;bottom:70px;left:35%;font-size:65px;animation:work 1.5s infinite alternate;z-index:2}
+@keyframes work{from{transform:rotate(-5deg)}to{transform:rotate(5deg) translateY(-4px)}}
+.machine{position:absolute;bottom:35px;right:8px;font-size:54px}
+.scene-label{position:absolute;top:10px;left:10px;background:#17202dcc;padding:7px 10px;border-radius:8px;font-size:12px}
+button{width:100%;border:0;border-radius:10px;padding:14px;margin-top:10px;font-size:16px;font-weight:bold;background:#e9b638;color:#171717}
+button:active{transform:scale(.98)}
+.progress{height:12px;background:#101522;border-radius:20px;overflow:hidden;margin-top:10px}
+.progress div{height:100%;width:0;background:#f5c447;transition:width .3s}
+.nav{display:flex;gap:5px;position:sticky;bottom:0;background:#111a29;padding:9px}
+.nav button{margin:0;padding:12px 3px;font-size:12px;background:#26354c;color:white}
+.note{font-size:12px;color:#b8c4d5;text-align:center}
+.hidden{display:none}
 </style>
 </head>
 <body>
-
 <header>
 <h2>👑 VICTOR EMPIRE PRO</h2>
-<small>WELCOME TO YOUR MINING KINGDOM</small>
+<small>YOUR MINING KINGDOM</small>
 </header>
-
-<section id="mine" class="page active">
-<div class="hero">
-<div>⛏️ MINED THIS SHIFT</div>
-<h1 id="balance">0.0000</h1>
-<div>VEX • VIRTUAL GAME POINTS</div>
+<main>
+<section id="mine">
+<div class="panel stats">
+<div class="stat">🪙 COINS<strong id="coins">0</strong></div>
+<div class="stat">🏆 LEVEL<strong id="level">1</strong></div>
+<div class="stat">⚒️ POWER<strong id="power">0.25</strong></div>
 </div>
-<div class="card">
-<h3>🏞️ GREEN VALLEY PIT</h3>
-<div class="stats"><span>Mining Power</span><b id="power">0.25 TH/s</b></div>
-<div class="stats"><span>Mining Timer</span><b id="timer">24:00:00</b></div>
-<div class="stats"><span>Status</span><b>Active</b></div>
-<button onclick="collect()">COLLECT POINTS</button>
-<p class="muted">Game points only. No real cryptocurrency or cash payout is connected.</p>
+<div class="panel">
+<div class="scene">
+<div class="sun">☀️</div>
+<div class="mountain"></div>
+<div class="mountain two"></div>
+<div class="mountain three"></div>
+<div class="ground"></div>
+<div class="cave"></div>
+<div class="miner" id="miner">👷</div>
+<div class="machine">⚙️</div>
+<div class="cart">🛒</div>
+<div class="scene-label" id="place">GREEN VALLEY PIT</div>
 </div>
-<div class="card">
-<h3>💎 YOUR MINER</h3>
-<div class="stats"><span>Miner Level</span><b id="level">Rookie</b></div>
-<div class="stats"><span>Mining Rate</span><b id="rate">0.25 TH/s</b></div>
-</div>
-</section>
-
-<section id="miners" class="page">
-<div class="hero"><h2>🛠️ MINER EMPIRE</h2><p>Upgrade your mining equipment</p></div>
-<div class="card">
-<h3>⛏️ AVAILABLE MINERS</h3>
-<div class="item">🥇 1 GRAM MINER <button onclick="upgrade(1)">Upgrade</button></div>
-<div class="item">💎 2 GRAM MINER <button onclick="upgrade(2)">Upgrade</button></div>
-<div class="item">👑 3 GRAM MINER <button onclick="upgrade(3)">Upgrade</button></div>
-<p class="muted">Upgrade prices and server verification will be configured later.</p>
-</div>
-<div class="card"><h3>🏆 IMPERIAL MINERS</h3><p class="muted">Your miner collection will appear here.</p></div>
-</section>
-
-<section id="quests" class="page">
-<div class="hero"><h2>🎯 QUEST CENTER</h2><p>Explore daily missions</p></div>
-<div class="card">
-<h3>DAILY QUESTS</h3>
-<div class="item">📅 Daily Check-in <button onclick="quest()">Check In</button></div>
-<div class="item">🌍 Explore Green Valley Pit</div>
-<div class="item">💎 Miner Collection</div>
-</div>
-<div class="card">
-<h3>SPONSORED QUESTS</h3>
-<p class="muted">Sponsored tasks will appear after a real task provider is connected.</p>
+<h3 id="levelName">⛏️ Rookie Miner</h3>
+<p>Next level: <span id="remaining">100</span> coins</p>
+<div class="progress"><div id="bar"></div></div>
+<button onclick="collect()">⛏️ COLLECT 10 COINS</button>
+<p class="note">Collect coins to unlock the next mining level.</p>
 </div>
 </section>
 
-<section id="wallet" class="page">
-<div class="hero"><h2>💰 MY WALLET</h2><h1 id="walletBalance">0.0000</h1><p>VEX Virtual Points</p></div>
-<div class="card">
-<h3>WALLET INFORMATION</h3>
-<div class="stats"><span>Game Balance</span><b id="wallet2">0.0000</b></div>
-<div class="stats"><span>Currency</span><b>Virtual VEX</b></div>
-<p class="muted">No TON wallet, blockchain transfer, or cash withdrawal is connected.</p>
-</div>
+<section id="miners" class="hidden panel">
+<h3>⚒️ YOUR MINER</h3>
+<p id="minerInfo">Rookie Miner • Level 1</p>
+<p>Collect coins to progress through 100 levels.</p>
 </section>
 
-<section id="profile" class="page">
-<div class="hero"><h2>👑 MINER PROFILE</h2><p>Welcome, Rookie Miner</p></div>
-<div class="card">
-<h3>PLAYER DETAILS</h3>
-<div class="stats"><span>Rank</span><b>Beginner</b></div>
-<div class="stats"><span>Level</span><b id="profileLevel">Rookie</b></div>
-<div class="stats"><span>Mining Power</span><b id="profilePower">0.25 TH/s</b></div>
-</div>
-<div class="card"><h3>👥 RECRUIT FRIENDS</h3><p class="muted">Referral system will be connected to the account database later.</p></div>
+<section id="quests" class="hidden panel">
+<h3>📋 QUESTS</h3>
+<p>⛏️ Mining practice</p>
+<p>Collect coins and increase your level.</p>
 </section>
 
-<nav>
-<button onclick="showPage('quests',this)"><span>🎯</span>Quests</button>
-<button onclick="showPage('miners',this)"><span>⛏️</span>Miners</button>
-<button class="active" onclick="showPage('mine',this)"><span>🏔️</span>Mine</button>
-<button onclick="showPage('wallet',this)"><span>💰</span>Wallet</button>
-<button onclick="showPage('profile',this)"><span>👤</span>Profile</button>
-</nav>
+<section id="wallet" class="hidden panel">
+<h3>💰 GAME WALLET</h3>
+<h2 id="walletCoins">0 VEX</h2>
+<p class="note">VEX is a virtual game score, not real cryptocurrency or cash.</p>
+</section>
+
+<section id="profile" class="hidden panel">
+<h3>👤 PLAYER PROFILE</h3>
+<p>VICTOR EMPIRE PLAYER</p>
+<p id="profileLevel">Level 1</p>
+</section>
+</main>
+
+<div class="nav">
+<button onclick="tab('quests')">📋 Quests</button>
+<button onclick="tab('miners')">👷 Miners</button>
+<button onclick="tab('mine')">⛏️ Mine</button>
+<button onclick="tab('wallet')">💰 Wallet</button>
+<button onclick="tab('profile')">👤 Profile</button>
+</div>
 
 <script>
-let balance=0;
-let seconds=86400;
-let level=0;
-function showPage(id,btn){
-document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
-document.getElementById(id).classList.add('active');
-document.querySelectorAll('nav button').forEach(b=>b.classList.remove('active'));
-btn.classList.add('active');
+let coins=Number(localStorage.getItem("vexCoins")||0);
+let level=Number(localStorage.getItem("vexLevel")||1);
+
+function save(){
+ localStorage.setItem("vexCoins",coins);
+ localStorage.setItem("vexLevel",level);
 }
-function update(){
-document.getElementById('balance').textContent=balance.toFixed(4);
-document.getElementById('walletBalance').textContent=balance.toFixed(4);
-document.getElementById('wallet2').textContent=balance.toFixed(4);
-}
+
 function collect(){
-balance+=0.001;
+ if(level>=100){
+  alert("You reached the maximum level!");
+  return;
+ }
+ coins+=10;
+ while(coins>=100 && level<100){
+  coins-=100;
+  level++;
+  alert("🎉 Congratulations! You reached Level "+level);
+ }
+ save();
+ update();
+}
+
+function update(){
+ document.getElementById("coins").textContent=coins;
+ document.getElementById("walletCoins").textContent=coins+" VEX";
+ document.getElementById("level").textContent=level;
+ document.getElementById("remaining").textContent=100-coins;
+ document.getElementById("bar").style.width=coins+"%";
+ document.getElementById("minerInfo").textContent="Miner • Level "+level;
+ document.getElementById("profileLevel").textContent="Level "+level;
+ document.getElementById("levelName").textContent="⛏️ Miner • Level "+level;
+ document.getElementById("place").textContent="MINING ZONE "+level;
+ document.getElementById("power").textContent=(0.25+level*.05).toFixed(2);
+ document.getElementById("miner").textContent=level>=75?"🦸":level>=50?"👨‍🚀":level>=25?"🧑‍🏭":"👷";
+}
+function tab(name){
+ ["mine","miners","quests","wallet","profile"].forEach(id=>{
+  document.getElementById(id).classList.toggle("hidden",id!==name);
+ });
+}
 update();
-alert('Virtual game points collected!');
-}
-function upgrade(n){
-alert('Miner upgrade will be enabled after secure database setup.');
-}
-function quest(){
-alert('Daily check-in will be activated after account database setup.');
-}
-setInterval(()=>{
-if(seconds>0)seconds--;
-let h=String(Math.floor(seconds/3600)).padStart(2,'0');
-let m=String(Math.floor(seconds%3600/60)).padStart(2,'0');
-let s=String(seconds%60).padStart(2,'0');
-document.getElementById('timer').textContent=h+':'+m+':'+s;
-},1000);
 </script>
 </body>
   </html>
+  
