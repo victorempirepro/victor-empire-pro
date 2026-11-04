@@ -2,117 +2,138 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>VICTOR EMPIRE PRO</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Victor Empire Pro</title>
 <style>
 *{box-sizing:border-box}
-body{margin:0;background:#10152a;color:white;font-family:Arial,sans-serif}
-header{padding:20px;text-align:center;background:#1b2342}
-header h2{margin:0;color:#f8c94b}
-header p{color:#b9c5e8;font-size:12px}
-.balance{margin:18px;padding:22px;text-align:center;border-radius:18px;background:linear-gradient(135deg,#49328c,#176b9c)}
-.balance h1{font-size:34px;margin:8px}
-.balance small{color:#d9e5ff}
-.card{margin:14px;padding:18px;border-radius:16px;background:#202a49}
-.card h3{margin-top:0;color:#ffd45d}
-.stat{display:flex;justify-content:space-between;margin:12px 0;color:#dce5ff}
-button{border:0;border-radius:12px;padding:13px;background:#f4c542;color:#171a2b;font-weight:bold;width:100%;margin-top:10px}
-button:active{opacity:.8}
-nav{position:fixed;bottom:0;left:0;right:0;background:#1b2342;display:flex;justify-content:space-around;padding:10px 2px}
-nav button{width:19%;padding:10px 2px;background:transparent;color:white;font-size:11px}
-nav button.active{color:#ffd45d}
-.page{display:none;padding-bottom:85px}
+body{margin:0;background:#10172b;color:#fff;font-family:Arial,sans-serif;padding-bottom:85px}
+header{padding:18px;text-align:center;background:#182443;border-bottom:1px solid #39476b}
+header h2{margin:0;color:#f8ce62}
+header small{color:#9eafd4}
+.page{display:none;padding:15px}
 .page.active{display:block}
-.item{padding:13px;background:#303b5e;border-radius:12px;margin:10px 0}
+.hero{padding:22px;border-radius:20px;text-align:center;background:linear-gradient(145deg,#302b67,#155d79)}
+.hero h1{font-size:32px;color:#ffd45c;margin:12px}
+.card{background:#202d4b;border:1px solid #354363;border-radius:17px;padding:17px;margin:13px 0}
+.card h3{color:#ffd45c;margin-top:0}
+.stats{display:flex;justify-content:space-between;margin:13px 0;color:#dce6ff}
+button{border:0;border-radius:12px;padding:13px;background:#f5c64d;color:#18203a;font-weight:bold;width:100%;margin-top:10px}
+.item{background:#303e60;padding:14px;border-radius:12px;margin:10px 0}
+.muted{color:#aebbd6;font-size:13px;line-height:1.5}
+nav{position:fixed;bottom:0;left:0;right:0;background:#182443;display:flex;justify-content:space-around;padding:8px 2px;border-top:1px solid #39476b}
+nav button{background:none;color:#b9c6e2;width:20%;font-size:11px;padding:8px 1px}
+nav button.active{color:#ffd45c}
+nav span{display:block;font-size:20px;margin-bottom:4px}
 </style>
 </head>
 <body>
+
 <header>
 <h2>👑 VICTOR EMPIRE PRO</h2>
-<p>WELCOME TO YOUR MINING KINGDOM</p>
+<small>WELCOME TO YOUR MINING KINGDOM</small>
 </header>
 
-<div class="balance">
-<small>MINED THIS SHIFT</small>
+<section id="mine" class="page active">
+<div class="hero">
+<div>⛏️ MINED THIS SHIFT</div>
 <h1 id="balance">0.0000</h1>
-<small>VEX • VIRTUAL GAME POINTS</small>
+<div>VEX • VIRTUAL GAME POINTS</div>
 </div>
-
-<div id="mine" class="page active">
 <div class="card">
-<h3>⛏️ GREEN VALLEY PIT</h3>
-<div class="stat"><span>Mining Power</span><b>0.25 TH/s</b></div>
-<div class="stat"><span>Mining Timer</span><b id="timer">24:00:00</b></div>
-<div class="stat"><span>Mining Status</span><b>Active</b></div>
-<button onclick="claim()">CLAIM</button>
+<h3>🏞️ GREEN VALLEY PIT</h3>
+<div class="stats"><span>Mining Power</span><b id="power">0.25 TH/s</b></div>
+<div class="stats"><span>Mining Timer</span><b id="timer">24:00:00</b></div>
+<div class="stats"><span>Status</span><b>Active</b></div>
+<button onclick="collect()">COLLECT POINTS</button>
+<p class="muted">Game points only. No real cryptocurrency or cash payout is connected.</p>
 </div>
 <div class="card">
 <h3>💎 YOUR MINER</h3>
-<div class="stat"><span>Miner Level</span><b>Rookie</b></div>
-<div class="stat"><span>Mining Rate</span><b>0.25 TH/s</b></div>
+<div class="stats"><span>Miner Level</span><b id="level">Rookie</b></div>
+<div class="stats"><span>Mining Rate</span><b id="rate">0.25 TH/s</b></div>
 </div>
-</div>
+</section>
 
-<div id="miners" class="page">
+<section id="miners" class="page">
+<div class="hero"><h2>🛠️ MINER EMPIRE</h2><p>Upgrade your mining equipment</p></div>
 <div class="card">
-<h3>🛠️ MINER UPGRADES</h3>
-<div class="item">🥇 1 GRAM Miner <button onclick="upgrade(1)">Upgrade</button></div>
-<div class="item">🥇 2 GRAM Miner <button onclick="upgrade(2)">Upgrade</button></div>
-<div class="item">🥇 3 GRAM Miner <button onclick="upgrade(3)">Upgrade</button></div>
-<p>Upgrades are currently display-only.</p>
+<h3>⛏️ AVAILABLE MINERS</h3>
+<div class="item">🥇 1 GRAM MINER <button onclick="upgrade(1)">Upgrade</button></div>
+<div class="item">💎 2 GRAM MINER <button onclick="upgrade(2)">Upgrade</button></div>
+<div class="item">👑 3 GRAM MINER <button onclick="upgrade(3)">Upgrade</button></div>
+<p class="muted">Upgrade prices and server verification will be configured later.</p>
 </div>
-</div>
+<div class="card"><h3>🏆 IMPERIAL MINERS</h3><p class="muted">Your miner collection will appear here.</p></div>
+</section>
 
-<div id="quests" class="page">
+<section id="quests" class="page">
+<div class="hero"><h2>🎯 QUEST CENTER</h2><p>Explore daily missions</p></div>
 <div class="card">
-<h3>🎯 DAILY QUESTS</h3>
-<div class="item">Daily Check-in <button onclick="quest()">Check In</button></div>
-<div class="item">Explore the Mining Kingdom</div>
+<h3>DAILY QUESTS</h3>
+<div class="item">📅 Daily Check-in <button onclick="quest()">Check In</button></div>
+<div class="item">🌍 Explore Green Valley Pit</div>
+<div class="item">💎 Miner Collection</div>
 </div>
+<div class="card">
+<h3>SPONSORED QUESTS</h3>
+<p class="muted">Sponsored tasks will appear after a real task provider is connected.</p>
 </div>
+</section>
 
-<div id="wallet" class="page">
+<section id="wallet" class="page">
+<div class="hero"><h2>💰 MY WALLET</h2><h1 id="walletBalance">0.0000</h1><p>VEX Virtual Points</p></div>
 <div class="card">
-<h3>💰 MY WALLET</h3>
-<div class="stat"><span>Virtual Balance</span><b id="walletBalance">0.0000 VEX</b></div>
-<p>VEX is currently an in-app game point, not real cryptocurrency or cash.</p>
+<h3>WALLET INFORMATION</h3>
+<div class="stats"><span>Game Balance</span><b id="wallet2">0.0000</b></div>
+<div class="stats"><span>Currency</span><b>Virtual VEX</b></div>
+<p class="muted">No TON wallet, blockchain transfer, or cash withdrawal is connected.</p>
 </div>
-</div>
+</section>
 
-<div id="profile" class="page">
+<section id="profile" class="page">
+<div class="hero"><h2>👑 MINER PROFILE</h2><p>Welcome, Rookie Miner</p></div>
 <div class="card">
-<h3>👤 MY PROFILE</h3>
-<div class="stat"><span>Player</span><b>Miner Rookie</b></div>
-<div class="stat"><span>Rank</span><b>Beginner</b></div>
-<div class="stat"><span>Referral</span><b>Coming soon</b></div>
+<h3>PLAYER DETAILS</h3>
+<div class="stats"><span>Rank</span><b>Beginner</b></div>
+<div class="stats"><span>Level</span><b id="profileLevel">Rookie</b></div>
+<div class="stats"><span>Mining Power</span><b id="profilePower">0.25 TH/s</b></div>
 </div>
-</div>
+<div class="card"><h3>👥 RECRUIT FRIENDS</h3><p class="muted">Referral system will be connected to the account database later.</p></div>
+</section>
 
 <nav>
-<button class="active" onclick="show('mine',this)">⛏️<br>Mine</button>
-<button onclick="show('miners',this)">🛠️<br>Miners</button>
-<button onclick="show('quests',this)">🎯<br>Quests</button>
-<button onclick="show('wallet',this)">💰<br>Wallet</button>
-<button onclick="show('profile',this)">👤<br>Profile</button>
+<button onclick="showPage('quests',this)"><span>🎯</span>Quests</button>
+<button onclick="showPage('miners',this)"><span>⛏️</span>Miners</button>
+<button class="active" onclick="showPage('mine',this)"><span>🏔️</span>Mine</button>
+<button onclick="showPage('wallet',this)"><span>💰</span>Wallet</button>
+<button onclick="showPage('profile',this)"><span>👤</span>Profile</button>
 </nav>
 
 <script>
 let balance=0;
 let seconds=86400;
-function show(id,btn){
+let level=0;
+function showPage(id,btn){
 document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
 document.getElementById(id).classList.add('active');
 document.querySelectorAll('nav button').forEach(b=>b.classList.remove('active'));
 btn.classList.add('active');
 }
-function claim(){
-alert('Real rewarded ads and server verification are not connected yet.');
+function update(){
+document.getElementById('balance').textContent=balance.toFixed(4);
+document.getElementById('walletBalance').textContent=balance.toFixed(4);
+document.getElementById('wallet2').textContent=balance.toFixed(4);
 }
-function upgrade(level){
-alert('Miner upgrade system will be connected to the secure game database.');
+function collect(){
+balance+=0.001;
+update();
+alert('Virtual game points collected!');
+}
+function upgrade(n){
+alert('Miner upgrade will be enabled after secure database setup.');
 }
 function quest(){
-alert('Daily quest will be activated after account and database setup.');
+alert('Daily check-in will be activated after account database setup.');
 }
 setInterval(()=>{
 if(seconds>0)seconds--;
