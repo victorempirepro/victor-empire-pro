@@ -2,154 +2,209 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="theme-color" content="#100b2b">
 <title>VICTOR EMPIRE PRO</title>
 <style>
+:root{--bg:#100b2b;--panel:#21164a;--gold:#ffc83d;--purple:#713cff;--mint:#35e6b0;--white:#fff}
 *{box-sizing:border-box}
-body{margin:0;background:#101522;color:white;font-family:Arial,sans-serif}
-header{text-align:center;padding:16px;background:#171f30;border-bottom:2px solid #dba52c}
-header h2{margin:0;color:#ffd45b}
-header small{color:#aebbd0}
-main{padding:14px;max-width:600px;margin:auto}
-.panel{background:#1b2639;border:1px solid #39475c;border-radius:15px;padding:15px;margin-bottom:14px}
-.stats{display:flex;justify-content:space-between;gap:8px;text-align:center}
-.stat{flex:1;background:#111a29;padding:12px 5px;border-radius:10px}
-.stat strong{display:block;color:#ffd45b;font-size:20px}
-.scene{height:290px;position:relative;overflow:hidden;border-radius:14px;background:linear-gradient(#70b7dc 0%,#c1e5e6 48%,#527b48 49%,#263e2c 100%)}
-.sun{position:absolute;right:25px;top:20px;font-size:35px}
-.mountain{position:absolute;bottom:110px;left:-25px;width:190px;height:130px;background:#697c82;clip-path:polygon(50% 0,100% 100%,0 100%)}
-.mountain.two{left:125px;width:220px;height:160px;background:#52656d}
-.mountain.three{left:290px;width:180px;height:120px;background:#71858b}
-.ground{position:absolute;bottom:0;width:100%;height:105px;background:#344a31;border-top:8px solid #6a8c43}
-.cave{position:absolute;bottom:65px;left:50%;transform:translateX(-50%);width:155px;height:105px;background:#151b20;border:10px solid #91643c;border-bottom:0;border-radius:80px 80px 0 0}
-.cave:after{content:"";position:absolute;bottom:0;left:15px;width:105px;height:45px;background:#f1a52b;opacity:.28;border-radius:50%}
-.track{position:absolute;bottom:20px;left:0;width:100%;height:5px;background:#b4a58b}
-.cart{position:absolute;bottom:23px;left:65%;font-size:40px;animation:cartmove 5s ease-in-out infinite alternate}
-@keyframes cartmove{from{transform:translateX(-20px)}to{transform:translateX(20px)}}
-.miner{position:absolute;bottom:70px;left:35%;font-size:65px;animation:work 1.5s infinite alternate;z-index:2}
-@keyframes work{from{transform:rotate(-5deg)}to{transform:rotate(5deg) translateY(-4px)}}
-.machine{position:absolute;bottom:35px;right:8px;font-size:54px}
-.scene-label{position:absolute;top:10px;left:10px;background:#17202dcc;padding:7px 10px;border-radius:8px;font-size:12px}
-button{width:100%;border:0;border-radius:10px;padding:14px;margin-top:10px;font-size:16px;font-weight:bold;background:#e9b638;color:#171717}
-button:active{transform:scale(.98)}
-.progress{height:12px;background:#101522;border-radius:20px;overflow:hidden;margin-top:10px}
-.progress div{height:100%;width:0;background:#f5c447;transition:width .3s}
-.nav{display:flex;gap:5px;position:sticky;bottom:0;background:#111a29;padding:9px}
-.nav button{margin:0;padding:12px 3px;font-size:12px;background:#26354c;color:white}
-.note{font-size:12px;color:#b8c4d5;text-align:center}
-.hidden{display:none}
+body{margin:0;background:#090719;color:var(--white);font-family:Arial,sans-serif;font-size:14px}
+.app{max-width:480px;min-height:100vh;margin:auto;background:radial-gradient(ellipse at 50% 0,#2a1762 0,#100b2b 48%,#0c0820 100%);padding:12px 12px 88px;overflow:hidden}
+.topline{display:flex;justify-content:space-between;color:#c6bee7;font-size:11px;margin:2px 2px 12px}
+.brand{font-weight:900;letter-spacing:1.1px;font-size:17px;text-shadow:0 2px 10px #7a42ff}
+.brand span{color:var(--gold)}
+.panel{background:linear-gradient(145deg,#2b205b,#1a123e);border:1px solid #514080;border-radius:17px;box-shadow:0 7px 20px #05031380;padding:12px;margin-bottom:10px}
+.connect{display:flex;align-items:center;gap:9px}
+.coinlogo{width:37px;height:37px;border-radius:11px;background:linear-gradient(145deg,#ffd95a,#e99a12);display:grid;place-items:center;color:#542d00;font-weight:1000;font-size:19px}
+.small{font-size:10px;color:#c0b7e3}
+.connect strong{display:block;font-size:12px;margin-top:3px}
+.btn{border:0;border-radius:11px;padding:10px 13px;font-weight:900;color:#15233b;background:linear-gradient(110deg,#35efad,#22c9a2)}
+.btn.gold{background:linear-gradient(110deg,#ffe36d,#ffb62d);color:#513000}
+.connect .btn{margin-left:auto}
+.mininghead{display:grid;grid-template-columns:1.1fr repeat(3,1fr);gap:6px}
+.collect{border:0;border-radius:12px;background:linear-gradient(145deg,#ffe37b,#ffb72c);color:#533400;text-align:center;padding:8px 3px;font-weight:900;min-height:70px}
+.collect small{display:block;font-size:9px;color:#6e4b0a;margin:4px 0}
+.mini{border-radius:12px;background:linear-gradient(145deg,#3c2c78,#211849);padding:6px 3px;text-align:center;border:1px solid #6650a0;min-height:70px}
+.mini .avatar{height:34px;width:29px;margin:0 auto 3px;position:relative}
+.avatar:before{content:"";position:absolute;left:8px;top:2px;width:14px;height:14px;border-radius:50%;background:#d99564;border:2px solid #f5c18c}
+.avatar:after{content:"";position:absolute;left:4px;top:16px;width:22px;height:18px;border-radius:8px 8px 4px 4px;background:linear-gradient(#e3a52d,#71431d);border:1px solid #ffd66a}
+.mini b{font-size:9px;display:block}
+.mini span{font-size:8px;color:#d7caff}
+.pricebar{display:flex;justify-content:space-between;margin-top:8px;background:#171039;border-radius:10px;padding:8px 10px;font-size:10px;color:#ffdb64;font-weight:800}
+.view{display:none}
+.view.active{display:block}
+.roadarea{height:450px;position:relative;overflow:hidden;border-radius:17px;margin-top:9px;background:radial-gradient(circle at 25% 20%,#c5a56d 0 2px,transparent 3px),radial-gradient(circle at 80% 68%,#7b6845 0 3px,transparent 4px),linear-gradient(135deg,#bda071,#92794e 55%,#b69b68);background-size:31px 29px,43px 39px,auto;border:1px solid #a88b5c}
+.road{position:absolute;left:33%;top:-7%;height:118%;width:35%;border-radius:50%;border:31px solid #f8dc83;border-left-color:#e9c66e;border-right-color:#ffedaa;transform:rotate(20deg);filter:drop-shadow(0 4px 3px #59411f70)}
+.road:after{content:"";position:absolute;inset:-19px;border:2px dashed #fff0bd;border-radius:50%}
+.tree{position:absolute;width:35px;height:35px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#8acb62,#286b2c 70%);box-shadow:0 5px 0 #72512e;z-index:1}
+.rock{position:absolute;width:27px;height:18px;border-radius:45% 55% 40% 40%;background:linear-gradient(135deg,#a6a39a,#55534e);box-shadow:0 4px 0 #716044}
+.node{position:absolute;width:43px;height:43px;border-radius:50%;background:linear-gradient(145deg,#b68bff,#6331d7);border:3px solid #e2cfff;box-shadow:0 4px 0 #32156e,0 0 14px #7746ff80;display:grid;place-items:center;font-weight:1000;font-size:14px;z-index:3}
+.node.done{background:linear-gradient(145deg,#ffe779,#ffb51d);border-color:#fff0a8;color:#5b3700}
+.node.current{width:50px;height:50px;background:linear-gradient(145deg,#ff7cdb,#c925a0);border-color:#ffd1f1;box-shadow:0 4px 0 #74135e,0 0 20px #ff69d4}
+.node small{position:absolute;right:-8px;top:-5px;background:#21134d;border:1px solid #bda8ff;border-radius:50%;width:17px;height:17px;font-size:8px;display:grid;place-items:center}
+.player{position:absolute;z-index:4;left:62%;top:61%;width:48px;height:70px}
+.player .head{position:absolute;top:0;left:15px;width:20px;height:21px;border-radius:50%;background:#c98655;border:2px solid #f4c18e}
+.player .helmet{position:absolute;top:-4px;left:10px;width:29px;height:12px;border-radius:12px 12px 4px 4px;background:#ffca35;border:2px solid #fff09a}
+.player .body{position:absolute;top:20px;left:8px;width:35px;height:34px;border-radius:9px 9px 5px 5px;background:linear-gradient(90deg,#b87926,#f2bd46,#8a4c1c);border:2px solid #f9d16a}
+.player .leg{position:absolute;top:51px;width:11px;height:18px;background:#46304b;border-radius:5px}
+.player .leg.l{left:12px}
+.player .leg.r{left:29px}
+.player .tool{position:absolute;right:-5px;top:26px;width:22px;height:4px;background:#d7c4a0;transform:rotate(-48deg);border-radius:3px}
+.you{position:absolute;left:54%;top:54%;z-index:5;background:#ffcf37;color:#573400;font-size:9px;font-weight:1000;border-radius:20px;padding:5px 9px}
+.pit{position:absolute;bottom:13px;left:50%;transform:translateX(-50%);background:#171039dd;border:1px solid #7e64b4;border-radius:20px;padding:7px 18px;font-size:10px;font-weight:900;z-index:5;white-space:nowrap}
+.nft{position:absolute;bottom:62px;left:10px;background:linear-gradient(135deg,#5dc8ff,#6844dc);border:2px solid #fff;border-radius:9px;width:42px;height:48px;display:grid;place-items:center;font-weight:1000;font-size:10px;z-index:5}
+.backminer{position:absolute;right:10px;bottom:64px;border:0;border-radius:20px;background:#ffbf35;color:#563300;padding:8px 12px;font-size:9px;font-weight:900;z-index:5}
+.sectiontitle{font-weight:900;font-size:15px;margin:12px 2px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.miner-card{background:linear-gradient(145deg,#322566,#1a123d);border:1px solid #58448d;border-radius:14px;padding:8px;min-width:0}
+.miner-art{height:92px;border-radius:10px;position:relative;overflow:hidden;background:linear-gradient(#78a9c8 0 43%,#4d6a3d 44% 60%,#765332 61%);border:1px solid #9278bf}
+.miner-art:before{content:"";position:absolute;bottom:-17px;left:-10px;width:130%;height:55px;background:linear-gradient(10deg,#614324,#b28b51);transform:rotate(-5deg)}
+.miner-art:after{content:"";position:absolute;right:13px;bottom:10px;width:27px;height:26px;background:linear-gradient(90deg,#493a2e,#b5a18a);border-radius:5px;box-shadow:-10px -8px 0 -4px #34302c}
+.miner-art .worker{position:absolute;z-index:2;left:39%;bottom:11px;width:27px;height:55px}
+.worker:before{content:"";position:absolute;top:0;left:7px;width:14px;height:14px;border-radius:50%;background:#d69a68;border:2px solid #f2c28e}
+.worker:after{content:"";position:absolute;top:14px;left:2px;width:24px;height:28px;border-radius:7px;background:linear-gradient(90deg,#b87521,#ffd45a,#89501c);border:1px solid #ffe49a;box-shadow:4px 25px 0 -7px #32263c,-5px 25px 0 -7px #32263c}
+.worker i{position:absolute;z-index:2;top:-4px;left:3px;width:22px;height:8px;border-radius:9px;background:#ffcb35;border:1px solid #fff0a4}
+.leveltag{position:absolute;top:6px;left:6px;background:#160e36d9;border-radius:6px;padding:3px 6px;font-size:9px;font-weight:900}
+.miner-card b{display:block;font-size:11px;margin:7px 0 3px}
+.miner-card p{margin:0;color:#b9aedb;font-size:9px;line-height:1.5}
+.statrow{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;text-align:center}
+.stat{background:#1a123d;border:1px solid #493675;border-radius:11px;padding:9px 3px}
+.stat b{display:block;color:#ffd45a;font-size:14px}
+.stat span{font-size:8px;color:#bcb2df}
+.quest{display:flex;gap:9px;align-items:center;margin:8px 0;background:#201747;border:1px solid #4a387b;border-radius:13px;padding:10px}
+.qicon{width:37px;height:37px;border-radius:10px;background:linear-gradient(145deg,#48b9ff,#6242c9);display:grid;place-items:center;font-weight:1000}
+.quest .qbody{flex:1;min-width:0}
+.quest b{font-size:11px}
+.quest p{margin:4px 0 0;color:#b8add8;font-size:9px}
+.profilehero{background:linear-gradient(120deg,#4b36a0,#1b1643);border:1px solid #8064cb;border-radius:17px;padding:14px;display:flex;align-items:center;gap:12px}
+.portrait{width:65px;height:65px;border-radius:50%;background:radial-gradient(circle at 50% 28%,#e3ad7a 0 18%,transparent 19%),linear-gradient(135deg,#ffd36a,#8b4d22);border:3px solid #ffdc74;position:relative}
+.portrait:after{content:"";position:absolute;left:13px;bottom:4px;width:34px;height:25px;border-radius:14px 14px 8px 8px;background:#473077}
+.profilehero h3{margin:0 0 5px;font-size:14px}
+.profilehero p{margin:0;color:#d1c8ef;font-size:10px}
+.walletbox{text-align:center;padding:20px 12px}
+.walletbox .big{font-size:26px;font-weight:1000;color:#ffd45b;margin:9px}
+.walletactions{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.walletaction{padding:18px 8px;text-align:center;border:0;border-radius:14px;background:linear-gradient(145deg,#ffe47a,#ffb52c);color:#503100;font-weight:900}
+.walletaction.blue{background:linear-gradient(145deg,#75e9ff,#35b9e4);color:#10364a}
+.bottomnav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:min(480px,100%);height:75px;background:#170f38f5;border-top:1px solid #57428d;display:grid;grid-template-columns:repeat(5,1fr);padding:7px 5px max(7px,env(safe-area-inset-bottom));z-index:20}
+.navbtn{border:0;background:none;color:#a99fcf;font-size:9px;font-weight:800;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px}
+.navico{width:29px;height:27px;border-radius:9px;display:grid;place-items:center;font-size:16px}
+.navbtn.active{color:#ffda61}
+.navbtn.active .navico{background:linear-gradient(145deg,#ffd75b,#e89c20);color:#4c2c00;box-shadow:0 0 13px #ffc83d55}
+.pill{display:inline-block;border-radius:20px;background:#38256f;padding:5px 9px;color:#d9ccff;font-size:9px}
+.notice{font-size:9px;color:#9f96c3;text-align:center;line-height:1.5;margin:12px 5px}
+@media(min-width:420px){.roadarea{height:490px}}
 </style>
 </head>
 <body>
-<header>
-<h2>👑 VICTOR EMPIRE PRO</h2>
-<small>YOUR MINING KINGDOM</small>
-</header>
-<main>
-<section id="mine">
-<div class="panel stats">
-<div class="stat">🪙 COINS<strong id="coins">0</strong></div>
-<div class="stat">🏆 LEVEL<strong id="level">1</strong></div>
-<div class="stat">⚒️ POWER<strong id="power">0.25</strong></div>
+<div class="app">
+ <div class="topline"><span>◉ 8:00 PM</span><span>VICTOR EMPIRE PRO　 <span style="color:#ffd45b">◆</span></span><span>▮▮▮</span></div>
+ <div class="brand">VICTOR <span>EMPIRE</span> PRO</div>
+ <div class="panel connect">
+  <div class="coinlogo">V</div><div><div class="small">MINING NOT STARTED</div><strong>Connect your TON wallet to start mining</strong></div>
+  <button class="btn" onclick="toast('Wallet connection is a demo in this version.')">Connect</button>
+ </div>
+ <div class="panel" style="padding:8px">
+  <div class="mininghead">
+   <button class="collect" onclick="collect()"><b>Collect</b><small>0 / 0 GRAM</small>+0.00</button>
+   <div class="mini"><div class="avatar"></div><b>1 GRAM</b><span>MINER</span></div>
+   <div class="mini"><div class="avatar"></div><b>2 GRAM</b><span>MINER</span></div>
+   <div class="mini"><div class="avatar"></div><b>3 GRAM</b><span>MINER</span></div>
+  </div>
+  <div class="pricebar"><span>🟡 VEX</span><span>60.003450</span><span id="balanceTop">0 VEX</span></div>
+ </div>
+ <main>
+  <section id="mine" class="view active">
+   <div class="roadarea">
+    <div class="road"></div>
+    <div class="tree" style="left:8%;top:18%"></div><div class="tree" style="right:10%;top:36%;width:29px;height:29px"></div>
+    <div class="tree" style="left:18%;bottom:24%;width:24px;height:24px"></div><div class="rock" style="right:17%;top:15%"></div>
+    <div class="rock" style="left:12%;top:53%"></div><div class="rock" style="right:12%;bottom:19%"></div>
+    <div id="nodes"></div>
+    <div class="you">YOU · SQUIRE</div>
+    <div class="player"><div class="helmet"></div><div class="head"></div><div class="body"></div><div class="leg l"></div><div class="leg r"></div><div class="tool"></div></div>
+    <div class="nft">NFT<br>★</div>
+    <button class="backminer" onclick="showTab('miners')">Back to my miner</button>
+    <div class="pit">Green Valley Pit</div>
+   </div>
+   <div class="notice">Your journey through the Empire Road · 100 levels</div>
+  </section>
+  <section id="miners" class="view">
+   <div class="sectiontitle">⛏ My Miners <span class="pill">Level <span id="lvlA">1</span></span></div>
+   <div class="grid" id="minerGrid"></div>
+  </section>
+  <section id="quests" class="view">
+   <div class="panel" style="display:flex;justify-content:space-between;align-items:center"><div><b>✦ +5 VEX　 EVERY 24H</b><div class="small">Complete quests and earn points</div></div><button class="btn gold" onclick="toast('Share feature is a demo.')">Share</button></div>
+   <div class="sectiontitle">Sponsored quests <span class="pill">0/20</span></div>
+   <div class="quest"><div class="qicon">▶</div><div class="qbody"><b>Watch a sponsored video</b><p>Partner quest · Reward +0.50 VEX</p></div><button class="btn gold" onclick="toast('No sponsor is connected yet.')">Go</button></div>
+   <div class="quest"><div class="qicon">✈</div><div class="qbody"><b>Wear the Empire name</b><p>Add our bot to your Telegram group and keep it there every day.</p><p style="color:#ffd45b">@VictorEmpireBot</p></div><button class="btn" onclick="toast('Quest is a demo.')">Check</button></div>
+   <div class="quest"><div class="qicon">◆</div><div class="qbody"><b>VEX Withdrawals</b><p>Withdrawal information · Demo only</p></div><button class="btn gold" onclick="showTab('wallet')">View</button></div>
+   <div class="quest"><div class="qicon">♛</div><div class="qbody"><b>Victor's Kingdom</b><p>Explore the Empire</p></div><button class="btn gold" onclick="toast('Coming soon.')">Open</button></div>
+  </section>
+  <section id="wallet" class="view">
+   <div class="panel walletbox"><span class="pill">MY WALLET</span><div class="big" id="walletBalance">0.003450 VEX</div><div class="small">Available game points</div></div>
+   <div class="walletactions"><button class="walletaction" onclick="toast('TON swap is not connected.')">🛒<br>STON.fi<br><small>Swap GRAM</small></button><button class="walletaction blue" onclick="toast('Live chart is a demo.')">▥<br>Live chart<br><small>VEX price</small></button></div>
+   <div class="panel" style="margin-top:10px"><b>Withdraw</b><p class="small">Send in-app points to your wallet. Wallet and cash withdrawals are not enabled in this demo.</p><button class="btn" style="width:100%" onclick="toast('Withdrawals are not available.')">Withdraw</button></div>
+   <div class="notice">VEX is a virtual game score in this prototype. It is not cryptocurrency or cash.</div>
+  </section>
+  <section id="profile" class="view">
+   <div class="profilehero"><div class="portrait"></div><div><h3>Victor Empire</h3><p>SOJIB · @BANGLA_AGENT</p><span class="pill">Lv <span id="lvlB">1</span> · Squire</span><b style="display:block;color:#ffd45b;margin-top:5px">Shovel Rookie I</b></div></div>
+   <div class="panel" style="margin-top:10px"><div class="statrow"><div class="stat"><b id="statMined">0</b><span>MINED</span></div><div class="stat"><b>0</b><span>PEAK LV</span></div><div class="stat"><b>0</b><span>RECRUITS</span></div><div class="stat"><b>0</b><span>DAYS</span></div></div></div>
+   <div class="sectiontitle">Recruit Friends</div>
+   <div class="panel"><h3 style="margin:0 0 6px;color:#ffd36a">Build your legion!</h3><p class="small">Invite friends to join your Empire. Referral rewards are not active in this demo.</p><button class="btn gold" style="width:100%" onclick="toast('Referral link is not configured yet.')">Invite Friends</button></div>
+  </section>
+ </main>
 </div>
-<div class="panel">
-<div class="scene">
-<div class="sun">☀️</div>
-<div class="mountain"></div>
-<div class="mountain two"></div>
-<div class="mountain three"></div>
-<div class="ground"></div>
-<div class="cave"></div>
-<div class="miner" id="miner">👷</div>
-<div class="machine">⚙️</div>
-<div class="cart">🛒</div>
-<div class="scene-label" id="place">GREEN VALLEY PIT</div>
-</div>
-<h3 id="levelName">⛏️ Rookie Miner</h3>
-<p>Next level: <span id="remaining">100</span> coins</p>
-<div class="progress"><div id="bar"></div></div>
-<button onclick="collect()">⛏️ COLLECT 10 COINS</button>
-<p class="note">Collect coins to unlock the next mining level.</p>
-</div>
-</section>
-
-<section id="miners" class="hidden panel">
-<h3>⚒️ YOUR MINER</h3>
-<p id="minerInfo">Rookie Miner • Level 1</p>
-<p>Collect coins to progress through 100 levels.</p>
-</section>
-
-<section id="quests" class="hidden panel">
-<h3>📋 QUESTS</h3>
-<p>⛏️ Mining practice</p>
-<p>Collect coins and increase your level.</p>
-</section>
-
-<section id="wallet" class="hidden panel">
-<h3>💰 GAME WALLET</h3>
-<h2 id="walletCoins">0 VEX</h2>
-<p class="note">VEX is a virtual game score, not real cryptocurrency or cash.</p>
-</section>
-
-<section id="profile" class="hidden panel">
-<h3>👤 PLAYER PROFILE</h3>
-<p>VICTOR EMPIRE PLAYER</p>
-<p id="profileLevel">Level 1</p>
-</section>
-</main>
-
-<div class="nav">
-<button onclick="tab('quests')">📋 Quests</button>
-<button onclick="tab('miners')">👷 Miners</button>
-<button onclick="tab('mine')">⛏️ Mine</button>
-<button onclick="tab('wallet')">💰 Wallet</button>
-<button onclick="tab('profile')">👤 Profile</button>
-</div>
-
+<nav class="bottomnav">
+ <button class="navbtn" data-tab="quests" onclick="showTab('quests')"><span class="navico">⚑</span>Quests</button>
+ <button class="navbtn" data-tab="miners" onclick="showTab('miners')"><span class="navico">♟</span>Miners</button>
+ <button class="navbtn active" data-tab="mine" onclick="showTab('mine')"><span class="navico">⛏</span>Mine</button>
+ <button class="navbtn" data-tab="wallet" onclick="showTab('wallet')"><span class="navico">▣</span>Wallet</button>
+ <button class="navbtn" data-tab="profile" onclick="showTab('profile')"><span class="navico">♙</span>Profile</button>
+</nav>
 <script>
-let coins=Number(localStorage.getItem("vexCoins")||0);
-let level=Number(localStorage.getItem("vexLevel")||1);
-
-function save(){
- localStorage.setItem("vexCoins",coins);
- localStorage.setItem("vexLevel",level);
+let coins=Number(localStorage.getItem('vep_coins')||0), level=Number(localStorage.getItem('vep_level')||1), mined=Number(localStorage.getItem('vep_mined')||0);
+function toast(msg){
+ let t=document.getElementById('toast');
+ if(!t){t=document.createElement('div');t.id='toast';t.style.cssText='position:fixed;left:50%;bottom:90px;transform:translateX(-50%);background:#fff0bd;color:#382200;padding:11px 15px;border-radius:12px;font-weight:800;font-size:12px;z-index:99;max-width:90%;text-align:center';document.body.appendChild(t)}
+ t.textContent=msg;t.style.display='block';clearTimeout(window.tt);window.tt=setTimeout(()=>t.style.display='none',2300)
 }
-
 function collect(){
- if(level>=100){
-  alert("You reached the maximum level!");
-  return;
+ coins+=10;mined+=10;
+ if(coins>=100&&level<100){coins-=100;level++;toast('Level up! You reached Level '+level)}
+ else toast('+10 virtual VEX points');
+ save();render()
+}
+function save(){
+ localStorage.setItem('vep_coins',coins);localStorage.setItem('vep_level',level);localStorage.setItem('vep_mined',mined)
+}
+function render(){
+ document.getElementById('balanceTop').textContent=coins+' VEX';
+ document.getElementById('walletBalance').textContent=(coins/1000+0.00345).toFixed(6)+' VEX';
+ document.getElementById('lvlA').textContent=level;
+ document.getElementById('lvlB').textContent=level;
+ document.getElementById('statMined').textContent=mined;
+ let n='';
+ for(let i=0;i<9;i++){
+  let lev=Math.max(1,level-4+i),top=83-i*9.5,left=i%2===0?49:34;
+  n+=`<div class="node ${lev<level?'done':''} ${lev===level?'current':''}" style="top:${top}%;left:${left}%">${lev}<small>${lev<level?'✓':'★'}</small></div>`
  }
- coins+=10;
- while(coins>=100 && level<100){
-  coins-=100;
-  level++;
-  alert("🎉 Congratulations! You reached Level "+level);
+ document.getElementById('nodes').innerHTML=n;
+ let cards='';
+ for(let i=1;i<=10;i++){
+  let lv=Math.min(100,level+i-1);
+  cards+=`<div class="miner-card"><div class="miner-art"><span class="leveltag">Lv ${lv}</span><div class="worker"><i></i></div></div><b>Shovel Rookie ${['I','II','III','IV','V'][Math.min(4,Math.floor((lv-1)/20))]}</b><p>${(1.28+lv*.013).toFixed(2)} TH/s<br>◉ ${(356+lv*21).toLocaleString()}</p></div>`
  }
- save();
- update();
+ document.getElementById('minerGrid').innerHTML=cards;
 }
-
-function update(){
- document.getElementById("coins").textContent=coins;
- document.getElementById("walletCoins").textContent=coins+" VEX";
- document.getElementById("level").textContent=level;
- document.getElementById("remaining").textContent=100-coins;
- document.getElementById("bar").style.width=coins+"%";
- document.getElementById("minerInfo").textContent="Miner • Level "+level;
- document.getElementById("profileLevel").textContent="Level "+level;
- document.getElementById("levelName").textContent="⛏️ Miner • Level "+level;
- document.getElementById("place").textContent="MINING ZONE "+level;
- document.getElementById("power").textContent=(0.25+level*.05).toFixed(2);
- document.getElementById("miner").textContent=level>=75?"🦸":level>=50?"👨‍🚀":level>=25?"🧑‍🏭":"👷";
+function showTab(tab){
+ document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
+ document.getElementById(tab).classList.add('active');
+ document.querySelectorAll('.navbtn').forEach(b=>b.classList.toggle('active',b.dataset.tab===tab));
+ window.scrollTo(0,0)
 }
-function tab(name){
- ["mine","miners","quests","wallet","profile"].forEach(id=>{
-  document.getElementById(id).classList.toggle("hidden",id!==name);
- });
-}
-update();
+render();
 </script>
 </body>
-  </html>
-  
+ </html>
+ 
